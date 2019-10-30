@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ohtuesimerkki.StatisticsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-10-30T12:53:09" hostname="DESKTOP-2TA4BAI" time="0.004">
+  <properties/>
+  <testcase name="palauttaaUseammanTykittelijan" classname="ohtuesimerkki.StatisticsTest" time="0.003"/>
+  <testcase name="palauttaaJoukkueenPelaajat" classname="ohtuesimerkki.StatisticsTest" time="0.0"/>
+  <testcase name="parasTykittelijaOikein" classname="ohtuesimerkki.StatisticsTest" time="0.0"/>
+  <testcase name="palauttaaNullJosEiLoydy" classname="ohtuesimerkki.StatisticsTest" time="0.001"/>
+  <testcase name="hakuLoytaaPelaajan" classname="ohtuesimerkki.StatisticsTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
