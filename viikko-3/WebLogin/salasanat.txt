@@ -6,3 +6,5 @@ uus2;uus123
 uus211357;uus123
 uus284996;uus123
 uus294250;uus123
+asd;1
+asdasd;lyhyt1

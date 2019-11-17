@@ -7,15 +7,15 @@ Feature: A new user account can be created if a proper unused username and passw
 
   Scenario: creation fails with too short username and valid password
     Given command new user is selected
-    When  ...
+    When  too short username "e" and password "salainen1" and a matching password confirmation are entered
     Then user is not created and error "username should have at least 3 characters" is reported
 
   Scenario: creation fails with correct username and too short password
     Given command new user is selected
-    When  ...
+    When  a valid username "mattipekka" and too short password "lyhyt1" and a matching password confirmation are entered
     Then user is not created and error "password should have at least 8 characters" is reported
 
   Scenario: creation fails when password and password confirmation do not match
     Given command new user is selected
-    When  ...
+    When  a valid username "mattipekka2" and valid password "salainen1" with non matching password confirmation "wrongpaswrd2"  are entered.
     Then user is not created and error "password and password confirmation do not match" is reported

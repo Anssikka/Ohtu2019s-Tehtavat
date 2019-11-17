@@ -58,6 +58,44 @@ public class Stepdefs {
     public void systemWillRespond(String pageContent) throws Throwable {
         assertTrue(driver.getPageSource().contains(pageContent));
     }
+
+    @Given("command new user is selected")
+    public void commandNewUserIsSelected() {
+            driver.get(baseUrl);
+            WebElement element = driver.findElement(By.linkText("register new user"));
+            element.click();
+    }
+
+    @When("a valid username {string} and password {string} and matching password confirmation are entered")
+    public void aValidUsernameAndPasswordAndMatchingPasswordConfirmationAreEntered(String username, String password) {
+        registerWith(username, password, password);
+    }
+
+    @Then("a new user is created")
+    public void aNewUserIsCreated() {
+        pageHasContent("Welcome to Ohtu Application!");
+    }
+
+    @When("too short username {string} and password {string} and a matching password confirmation are entered")
+    public void tooShortUsernameAndPasswordAndAMatchingPasswordConfirmationAreEntered(String string, String string2) {
+        registerWith(string, string2, string2);
+    }
+
+    @When("a valid username {string} and too short password {string} and a matching password confirmation are entered")
+    public void aValidUsernameAndTooShortPasswordAndAMatchingPasswordConfirmationAreEntered(String string, String string2) {
+        registerWith(string, string2, string2);
+    }
+
+    @When("a valid username {string} and valid password {string} with non matching password confirmation {string}  are entered.")
+    public void aValidUsernameAndValidPasswordWithNonMatchingPasswordConfirmationAreEntered(String string, String string2, String string3) {
+        registerWith(string, string2, string3);
+    }
+
+    @Then("user is not created and error {string} is reported")
+    public void userIsNotCreatedAndErrorIsReported(String string) {
+        pageHasContent(string);
+    }
+
     
     @After
     public void tearDown(){
@@ -78,5 +116,18 @@ public class Stepdefs {
         element.sendKeys(password);
         element = driver.findElement(By.name("login"));
         element.submit();  
-    } 
+    }
+
+    private void registerWith(String username, String password, String confirmPassword) {
+        assertTrue(driver.getPageSource().contains("Create username and give password"));
+        WebElement element = driver.findElement(By.name("username"));
+        element.sendKeys(username);
+        element = driver.findElement(By.name("password"));
+        element.sendKeys(password);
+        element = driver.findElement(By.name("passwordConfirmation"));
+        element.sendKeys(confirmPassword);
+        element = driver.findElement(By.name("signup"));
+        element.submit();
+
+    }
 }
