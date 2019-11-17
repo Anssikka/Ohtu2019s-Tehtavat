@@ -4,6 +4,8 @@ import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+
+import static java.lang.Thread.sleep;
 import static org.junit.Assert.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -89,6 +91,22 @@ public class Stepdefs {
     @When("a valid username {string} and valid password {string} with non matching password confirmation {string}  are entered.")
     public void aValidUsernameAndValidPasswordWithNonMatchingPasswordConfirmationAreEntered(String string, String string2, String string3) {
         registerWith(string, string2, string3);
+    }
+
+    @Given("user with username {string} with password {string} is successfully created")
+    public void userWithUsernameWithPasswordIsSuccessfullyCreated(String string, String string2) {
+        commandNewUserIsSelected();
+        registerWith(string, string2, string2);
+        pageHasContent("Welcome to Ohtu Application!");
+    }
+
+    @Given("user with username {string} and password {string} is tried to be created")
+    public void userWithUsernameAndPasswordIsTriedToBeCreated(String string, String string2) {
+        commandNewUserIsSelected();
+        registerWith(string, string2, string2);
+        pageHasContent("username should have at least 3 characters");
+        WebElement element = driver.findElement(By.linkText("back to home"));
+        element.click();
     }
 
     @Then("user is not created and error {string} is reported")
