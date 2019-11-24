@@ -148,6 +148,6 @@ public class KauppaTest {
         k.lisaaKoriin(1);
         k.poistaKorista(1);
         verify(varasto, times(1)).palautaVarastoon(any());
-        
+
     }
 }
