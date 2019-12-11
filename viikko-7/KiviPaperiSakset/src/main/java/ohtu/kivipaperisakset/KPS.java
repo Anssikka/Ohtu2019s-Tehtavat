@@ -16,23 +16,29 @@ public abstract class KPS {
         tokanSiirto = tekoaly.annaSiirto();
         System.out.println("Tietokone valitsi: " + tokanSiirto);
 
+        pelaaKierroksia(ekanSiirto, tokanSiirto);
+
+        System.out.println();
+        System.out.println("Kiitos!");
+        System.out.println(tuomari);
+    }
+
+    public void pelaaKierroksia(String ekanSiirto, String tokanSiirto) {
+
         while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto)) {
             tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
             System.out.println(tuomari);
             System.out.println();
 
             System.out.print("Ensimmäisen pelaajan siirto: ");
-            ekanSiirto = scanner.nextLine();
 
+            ekanSiirto = scanner.nextLine();
             tokanSiirto = tekoaly.annaSiirto();
+
             System.out.println("Tietokone valitsi: " + tokanSiirto);
             tekoaly.asetaSiirto(ekanSiirto);
 
         }
-
-        System.out.println();
-        System.out.println("Kiitos!");
-        System.out.println(tuomari);
     }
 
     static boolean onkoOkSiirto(String siirto) {
