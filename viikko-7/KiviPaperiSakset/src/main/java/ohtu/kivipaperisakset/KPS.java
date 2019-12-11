@@ -9,36 +9,23 @@ public abstract class KPS {
 
 
     public void pelaa() {
-        System.out.print("Ensimmäisen pelaajan siirto: ");
-        String ekanSiirto = scanner.nextLine();
+        String ekanSiirto;
         String tokanSiirto;
 
-        tokanSiirto = tekoaly.annaSiirto();
-        System.out.println("Tietokone valitsi: " + tokanSiirto);
+        do {
+            System.out.print("Ensimmäisen pelaajan siirto: ");
+            ekanSiirto = scanner.nextLine();
+            tokanSiirto = tekoaly.annaSiirto();
+            System.out.println("Tietokone valitsi: " + tokanSiirto);
+            tekoaly.asetaSiirto(ekanSiirto);
+            tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
+            System.out.println(tuomari);
 
-        pelaaKierroksia(ekanSiirto, tokanSiirto);
+        } while(onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto));
 
         System.out.println();
         System.out.println("Kiitos!");
         System.out.println(tuomari);
-    }
-
-    public void pelaaKierroksia(String ekanSiirto, String tokanSiirto) {
-
-        while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto)) {
-            tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
-            System.out.println(tuomari);
-            System.out.println();
-
-            System.out.print("Ensimmäisen pelaajan siirto: ");
-
-            ekanSiirto = scanner.nextLine();
-            tokanSiirto = tekoaly.annaSiirto();
-
-            System.out.println("Tietokone valitsi: " + tokanSiirto);
-            tekoaly.asetaSiirto(ekanSiirto);
-
-        }
     }
 
     static boolean onkoOkSiirto(String siirto) {

@@ -10,32 +10,24 @@ public class KPSPelaajaVsPelaaja extends KPS {
 
     @Override
     public void pelaa() {
+        String ekanSiirto;
+        String tokanSiirto;
 
-        System.out.print("Ensimmäisen pelaajan siirto: ");
-        String ekanSiirto = scanner.nextLine();
-        System.out.print("Toisen pelaajan siirto: ");
-        String tokanSiirto = scanner.nextLine();
+        do {
+            System.out.print("Ensimmäisen pelaajan siirto: ");
+            ekanSiirto = scanner.nextLine();
+            System.out.print("Toisen pelaajan siirto: ");
+            tokanSiirto = scanner.nextLine();
+            tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
+            System.out.println(tuomari);
 
-        pelaaKierroksia(ekanSiirto, tokanSiirto);
+        } while(onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto));
 
         System.out.println();
         System.out.println("Kiitos!");
         System.out.println(tuomari);
+
     }
 
-    @Override
-    public void pelaaKierroksia(String ekanSiirto, String tokanSiirto) {
-        while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto)) {
-            tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
-            System.out.println(tuomari);
-            System.out.println();
-
-            System.out.print("Ensimmäisen pelaajan siirto: ");
-            ekanSiirto = scanner.nextLine();
-
-            System.out.print("Toisen pelaajan siirto: ");
-            tokanSiirto = scanner.nextLine();
-        }
-    }
 
 }
